@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/w3.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/testcontroller.js"></script>
+	<style>
+		.select{
+    margin-bottom: 1%;
+    width: 5% !important;
+}
+	.margin-right{
+		margin-right: 2% !important;
+	}
+	.margin-left{
+		margin-left: 2% !important;
+	}
+	
+		.sort-true {
+    background:no-repeat right center url(data:image/gif;base64,R0lGODlhCgAKALMAAHFxcYKCgp2dnaampq+vr83NzeHh4f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAAAgAIf/8SUNDUkdCRzEwMTIAAAUwYXBwbAIgAABtbnRyUkdCIFhZWiAH2QACABkACwAaAAthY3NwQVBQTAAAAABhcHBsAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkc2NtAAABCAAAAvJkZXNjAAAD/AAAAG9nWFlaAAAEbAAAABR3dHB0AAAEgAAAABRyWFlaAAAElAAAABRiWFlaAAAEqAAAABRyVFJDAAAEvAAAAA5jcHJ0AAAEzAAAADhjaGFkAAAFBAAAACxn/1RSQwAABLwAAAAOYlRSQwAABLwAAAAObWx1YwAAAAAAAAARAAAADGVuVVMAAAAmAAACfmVzRVMAAAAmAAABgmRhREsAAAAuAAAB6mRlREUAAAAsAAABqGZpRkkAAAAoAAAA3GZyRlUAAAAoAAABKml0SVQAAAAoAAACVm5sTkwAAAAoAAACGG5iTk8AAAAmAAABBHB0QlIAAAAmAAABgnN2U0UAAAAmAAABBGphSlAAAAAaAAABUmtvS1IAAAAWAAACQHpoVFcAAAAWAAABbHpoQ04AAAAWAAAB1HJ1UlUAAAAiAAACpHBsUEwAAAAsAAACxgBZAGwAZQBpAG4AZf8AbgAgAFIARwBCAC0AcAByAG8AZgBpAGkAbABpAEcAZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGwAUAByAG8AZgBpAGwAIABHAOkAbgDpAHIAaQBxAHUAZQAgAFIAVgBCTgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOuQGnUoACAAUgBHAEIAIIJyX2ljz4/wAFAAZQByAGYAaQBsACAAUgBHAEIAIABHAGUAbgDpAHIAaQBjAG8AQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbGZukBoAIABSAEcAQgAgY8+P8GX/h072AEcAZQBuAGUAcgBlAGwAIABSAEcAQgAtAGIAZQBzAGsAcgBpAHYAZQBsAHMAZQBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGzHfLwYACAAUgBHAEIAINUEuFzTDMd8AFAAcgBvAGYAaQBsAG8AIABSAEcAQgAgAEcAZQBuAGUAcgBpAGMAbwBHAGUAbgBlAHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABlBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcAQgBVAG4AaQB3AGUAcgBzAGEAbABuAHkAIABwAHIAbwBm/wBpAGwAIABSAEcAQgAAZGVzYwAAAAAAAAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAAAoGgAAFZ8AALg2Y3VydgAAAAAAAAABAc0AAHRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLkMsIGFsbCByaWdodHMgcmVzZXJ2ZWQuAHNmMzIAAAAAAAEMQgAABd7///MmAAAHkgAA/ZH///ui///9owAAA9wAAMBsACwAAAAACgAKAAAEJZAMIcakQZjNtyhFxwEIIRofAookUnapu26t+6KFLYe1TgQ5VwQAOw%3D%3D);
+   }
+   .sort-false {
+   background:no-repeat right center url(data:image/gif;base64,R0lGODlhCgAKALMAAHFxcYKCgp2dnaampq+vr83NzeHh4f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAAAgAIf/8SUNDUkdCRzEwMTIAAAUwYXBwbAIgAABtbnRyUkdCIFhZWiAH2QACABkACwAaAAthY3NwQVBQTAAAAABhcHBsAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkc2NtAAABCAAAAvJkZXNjAAAD/AAAAG9nWFlaAAAEbAAAABR3dHB0AAAEgAAAABRyWFlaAAAElAAAABRiWFlaAAAEqAAAABRyVFJDAAAEvAAAAA5jcHJ0AAAEzAAAADhjaGFkAAAFBAAAACxn/1RSQwAABLwAAAAOYlRSQwAABLwAAAAObWx1YwAAAAAAAAARAAAADGVuVVMAAAAmAAACfmVzRVMAAAAmAAABgmRhREsAAAAuAAAB6mRlREUAAAAsAAABqGZpRkkAAAAoAAAA3GZyRlUAAAAoAAABKml0SVQAAAAoAAACVm5sTkwAAAAoAAACGG5iTk8AAAAmAAABBHB0QlIAAAAmAAABgnN2U0UAAAAmAAABBGphSlAAAAAaAAABUmtvS1IAAAAWAAACQHpoVFcAAAAWAAABbHpoQ04AAAAWAAAB1HJ1UlUAAAAiAAACpHBsUEwAAAAsAAACxgBZAGwAZQBpAG4AZf8AbgAgAFIARwBCAC0AcAByAG8AZgBpAGkAbABpAEcAZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGwAUAByAG8AZgBpAGwAIABHAOkAbgDpAHIAaQBxAHUAZQAgAFIAVgBCTgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOuQGnUoACAAUgBHAEIAIIJyX2ljz4/wAFAAZQByAGYAaQBsACAAUgBHAEIAIABHAGUAbgDpAHIAaQBjAG8AQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbGZukBoAIABSAEcAQgAgY8+P8GX/h072AEcAZQBuAGUAcgBlAGwAIABSAEcAQgAtAGIAZQBzAGsAcgBpAHYAZQBsAHMAZQBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGzHfLwYACAAUgBHAEIAINUEuFzTDMd8AFAAcgBvAGYAaQBsAG8AIABSAEcAQgAgAEcAZQBuAGUAcgBpAGMAbwBHAGUAbgBlAHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABlBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcAQgBVAG4AaQB3AGUAcgBzAGEAbABuAHkAIABwAHIAbwBm/wBpAGwAIABSAEcAQgAAZGVzYwAAAAAAAAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAAAoGgAAFZ8AALg2Y3VydgAAAAAAAAABAc0AAHRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLkMsIGFsbCByaWdodHMgcmVzZXJ2ZWQuAHNmMzIAAAAAAAEMQgAABd7///MmAAAHkgAA/ZH///ui///9owAAA9wAAMBsACwAAAAACgAKAAAEJRBJREKZsxQDsCSGIVzZFnYTGIqktp7fG46uzAn2TAyCMPC9QAQAOw%3D%3D);
+}
+	.clearfix{
+		display: table;
+		content: "";
+		clear:both;
+	}
+	.jumpTo{
+		width:15% !important;
+	}
+	</style>
+</head>
+<body ng-app="app">
+	<div ng-controller="test">
+		<!-- NAV -->
+			<div class="w3-bar w3-red">
+				<a href="test.html" class="w3-bar-item w3-button w3-padding-16">Link 1</a>
+				<a href="test2.html" class="w3-bar-item w3-button w3-padding-16">Link 2</a>
+			</div>
+		<!-- END NAV -->
+		<!-- PAGE CONTENT -->
+		<div class="w3-container w3-margin-top">
+		<h3>Student's List</h3>
+		<div class="w3-margin-top  margin-right margin-left">
+		Show <select class="w3-select select" ng-model="pageEntries" ng-value="e.value" ng-options="e as e.label for e in entries"></select> Entries
+		<div class="w3-right">
+			<input type="text" class="w3-input" ng-model="search" placeholder="Search">
+		</div>
+	</div>
+	
+		<table class="w3-table-all w3-centered">
+			<tr>
+				<th ng-repeat="(i,h) in header" ng-class="selectedCls(i)" ng-click="changeSort(i)">{{ h }}</th>
+			</tr>
+			<tr ng-repeat="d in data | orderBy: sort.column : sort.descending | filter:search | startFrom:currentPage*pageSize | limitTo:pageSize">
+				<td>{{ d.familyname }} {{ d.givenname }}</td>
+				<td>{{ d.course }} - {{ d.yearlevel }}</td>
+				<td>{{ d.school }}</td>
+				<td ng-if="d.paid == 0">Not Paid</td>
+				<td ng-if="d.paid == 1">Paid</td>
+			</tr>
+		</table>
+		
+		<div class="w3-margin-top w3-right">
+		<button class="w3-btn w3-blue w3-round" ng-disabled="currentPage==0" ng-click="currentPage=currentPage-1">Previous</button>
+		{{currentPage+1}}/{{numberOfPage()}}
+		<button class="w3-btn w3-blue w3-round" ng-disabled="currentPage >= data.length / pageSize - 1" ng-click="currentPage=currentPage+1">Next</button>
+		</div>
+	</div>
+	<!-- END PAGE CONTENT -->
+	</div>
+</body>
+</html>

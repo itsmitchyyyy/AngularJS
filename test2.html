@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/w3.css">
+	<script src="js/angular.min.js"></script>
+    <script src="js/test3controller.js"></script>
+    <style>
+        	.select{
+    margin-bottom: 1%;
+    width: 5% !important;
+}
+        .margin-right{
+		margin-right: 2% !important;
+	}
+	.margin-left{
+		margin-left: 2% !important;
+	}
+	
+    table th{
+        cursor: pointer;
+    }
+    .sort-true {
+    background:no-repeat right center url(data:image/gif;base64,R0lGODlhCgAKALMAAHFxcYKCgp2dnaampq+vr83NzeHh4f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAAAgAIf/8SUNDUkdCRzEwMTIAAAUwYXBwbAIgAABtbnRyUkdCIFhZWiAH2QACABkACwAaAAthY3NwQVBQTAAAAABhcHBsAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkc2NtAAABCAAAAvJkZXNjAAAD/AAAAG9nWFlaAAAEbAAAABR3dHB0AAAEgAAAABRyWFlaAAAElAAAABRiWFlaAAAEqAAAABRyVFJDAAAEvAAAAA5jcHJ0AAAEzAAAADhjaGFkAAAFBAAAACxn/1RSQwAABLwAAAAOYlRSQwAABLwAAAAObWx1YwAAAAAAAAARAAAADGVuVVMAAAAmAAACfmVzRVMAAAAmAAABgmRhREsAAAAuAAAB6mRlREUAAAAsAAABqGZpRkkAAAAoAAAA3GZyRlUAAAAoAAABKml0SVQAAAAoAAACVm5sTkwAAAAoAAACGG5iTk8AAAAmAAABBHB0QlIAAAAmAAABgnN2U0UAAAAmAAABBGphSlAAAAAaAAABUmtvS1IAAAAWAAACQHpoVFcAAAAWAAABbHpoQ04AAAAWAAAB1HJ1UlUAAAAiAAACpHBsUEwAAAAsAAACxgBZAGwAZQBpAG4AZf8AbgAgAFIARwBCAC0AcAByAG8AZgBpAGkAbABpAEcAZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGwAUAByAG8AZgBpAGwAIABHAOkAbgDpAHIAaQBxAHUAZQAgAFIAVgBCTgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOuQGnUoACAAUgBHAEIAIIJyX2ljz4/wAFAAZQByAGYAaQBsACAAUgBHAEIAIABHAGUAbgDpAHIAaQBjAG8AQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbGZukBoAIABSAEcAQgAgY8+P8GX/h072AEcAZQBuAGUAcgBlAGwAIABSAEcAQgAtAGIAZQBzAGsAcgBpAHYAZQBsAHMAZQBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGzHfLwYACAAUgBHAEIAINUEuFzTDMd8AFAAcgBvAGYAaQBsAG8AIABSAEcAQgAgAEcAZQBuAGUAcgBpAGMAbwBHAGUAbgBlAHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABlBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcAQgBVAG4AaQB3AGUAcgBzAGEAbABuAHkAIABwAHIAbwBm/wBpAGwAIABSAEcAQgAAZGVzYwAAAAAAAAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAAAoGgAAFZ8AALg2Y3VydgAAAAAAAAABAc0AAHRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLkMsIGFsbCByaWdodHMgcmVzZXJ2ZWQuAHNmMzIAAAAAAAEMQgAABd7///MmAAAHkgAA/ZH///ui///9owAAA9wAAMBsACwAAAAACgAKAAAEJZAMIcakQZjNtyhFxwEIIRofAookUnapu26t+6KFLYe1TgQ5VwQAOw%3D%3D);
+   }
+   .sort-false {
+   background:no-repeat right center url(data:image/gif;base64,R0lGODlhCgAKALMAAHFxcYKCgp2dnaampq+vr83NzeHh4f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAAAgAIf/8SUNDUkdCRzEwMTIAAAUwYXBwbAIgAABtbnRyUkdCIFhZWiAH2QACABkACwAaAAthY3NwQVBQTAAAAABhcHBsAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkc2NtAAABCAAAAvJkZXNjAAAD/AAAAG9nWFlaAAAEbAAAABR3dHB0AAAEgAAAABRyWFlaAAAElAAAABRiWFlaAAAEqAAAABRyVFJDAAAEvAAAAA5jcHJ0AAAEzAAAADhjaGFkAAAFBAAAACxn/1RSQwAABLwAAAAOYlRSQwAABLwAAAAObWx1YwAAAAAAAAARAAAADGVuVVMAAAAmAAACfmVzRVMAAAAmAAABgmRhREsAAAAuAAAB6mRlREUAAAAsAAABqGZpRkkAAAAoAAAA3GZyRlUAAAAoAAABKml0SVQAAAAoAAACVm5sTkwAAAAoAAACGG5iTk8AAAAmAAABBHB0QlIAAAAmAAABgnN2U0UAAAAmAAABBGphSlAAAAAaAAABUmtvS1IAAAAWAAACQHpoVFcAAAAWAAABbHpoQ04AAAAWAAAB1HJ1UlUAAAAiAAACpHBsUEwAAAAsAAACxgBZAGwAZQBpAG4AZf8AbgAgAFIARwBCAC0AcAByAG8AZgBpAGkAbABpAEcAZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGwAUAByAG8AZgBpAGwAIABHAOkAbgDpAHIAaQBxAHUAZQAgAFIAVgBCTgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOuQGnUoACAAUgBHAEIAIIJyX2ljz4/wAFAAZQByAGYAaQBsACAAUgBHAEIAIABHAGUAbgDpAHIAaQBjAG8AQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbGZukBoAIABSAEcAQgAgY8+P8GX/h072AEcAZQBuAGUAcgBlAGwAIABSAEcAQgAtAGIAZQBzAGsAcgBpAHYAZQBsAHMAZQBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGzHfLwYACAAUgBHAEIAINUEuFzTDMd8AFAAcgBvAGYAaQBsAG8AIABSAEcAQgAgAEcAZQBuAGUAcgBpAGMAbwBHAGUAbgBlAHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABlBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcAQgBVAG4AaQB3AGUAcgBzAGEAbABuAHkAIABwAHIAbwBm/wBpAGwAIABSAEcAQgAAZGVzYwAAAAAAAAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAAAoGgAAFZ8AALg2Y3VydgAAAAAAAAABAc0AAHRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLkMsIGFsbCByaWdodHMgcmVzZXJ2ZWQuAHNmMzIAAAAAAAEMQgAABd7///MmAAAHkgAA/ZH///ui///9owAAA9wAAMBsACwAAAAACgAKAAAEJRBJREKZsxQDsCSGIVzZFnYTGIqktp7fG46uzAn2TAyCMPC9QAQAOw%3D%3D);
+}
+    </style>
+</head>
+<body ng-app="app">
+    <div ng-controller="test">
+        <!-- NAV -->
+			<div class="w3-bar w3-red">
+                    <a href="test.html" class="w3-bar-item w3-button w3-padding-16">Link 1</a>
+                    <a href="#" class="w3-bar-item w3-button w3-padding-16">Link 2</a>
+                </div>
+            <!-- END NAV -->    
+        <div class="w3-margin-top w3-container  ">
+        <h3>Payment's List</h3>
+        <div class="w3-margin-top  margin-right margin-left">
+                Show <select class="w3-select select" ng-model="pageEntries" ng-value="e.value" ng-options="e as e.label for e in entries"></select> Entries
+                <div class="w3-right">
+                    <input type="text" class="w3-input" ng-model="search" placeholder="Search">
+                </div>
+            <!-- <div class="w3-left margin-left">
+                <select ng-model="pageEntries" id="pageEntries" class="w3-select" ng-options="e as e.label for e in entries"></select>
+            </div> -->
+            <!-- <div class="w3-right margin-right">
+                <input type="text" class="w3-input" ng-model="search" id="search" placeholder="Search..">
+            </div> -->
+        </div>
+        <div class="w3-container w3-margin-top ">
+            <table class="w3-table-all w3-centered">
+                <tr>
+                    <th ng-repeat="(i,h) in header" ng-class="selectedCls(i)" ng-click="changeSort(i)">{{ h }}</th>
+                    
+                </tr>
+                <tr ng-repeat="sc in schoolList() | filter:search | orderBy: sort.column : sort.descending | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td>{{ sc }}</td>
+                    <td>{{ totalStudents(sc) }}</td>
+                    <td>{{ totalPaid(sc) }}</td>
+                    <td><span>&#8369; </span>{{ totalAmount(sc) | number : 2 }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{{ subTotalStudents(schoolList()) }}</td>
+                    <td>{{ subTotalPaid(schoolList()) }}</td>
+                    <td><span>&#8369; </span>{{ subTotalAmount(schoolList()) | number : 2 }}</td>
+                </tr>
+            </table>
+            <div class="w3-margin-top w3-right">
+                <button class="w3-btn w3-blue w3-round" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous</button>
+                {{currentPage+1}}/{{numberOfPage(schoolList())}}
+                <button class="w3-btn w3-blue w3-round" ng-disabled="currentPage >= schoolList().length/pageSize-1" ng-click="currentPage=currentPage+1">Next</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
